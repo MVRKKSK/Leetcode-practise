@@ -9,20 +9,21 @@ public:
     vector<int> findTwoElement(vector<int> arr, int n) {
         // code here
         int a , b;
-        vector<int> res(n+1 , 0);
         for(int i=0;i<n;i++){
-            res[arr[i]]++;
-            if(res[arr[i]]==2){
-                b = arr[i];
-                
+            int index = abs(arr[i])-1;
+            if(arr[index]<0){
+                a = abs(arr[i]);
+            }
+            else{
+                arr[index] = -arr[index];
             }
         }
-        for(int i=1;i<=n;i++){
-            if(res[i]==0){
-                a = i;
+        for(int i=0;i<n;i++){
+            if(arr[i]>0){
+                b = i+1;
             }
         }
-        return {b , a};
+        return {a , b};
     }
 };
 
